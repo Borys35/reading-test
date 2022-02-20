@@ -1,69 +1,68 @@
 <script lang="ts">
-  import logo from "@/assets/svelte.png";
-  import Counter from "@/lib/Counter.svelte";
+  import Container from "./lib/Container.svelte";
+  import Heading from "./lib/Heading.svelte";
+  import Layout from "./lib/Layout.svelte";
 </script>
 
-<main>
-  <img src={logo} alt="Svelte Logo" />
-  <h1>Hello Typescript!</h1>
-
-  <Counter />
-
-  <p>
-    Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte
-    apps.
-  </p>
-
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme">SvelteKit</a> for
-    the officially supported framework, also powered by Vite!
-  </p>
-</main>
+<div>
+  <Layout>
+    <Container>
+      <div class="wrapper">
+        <Heading level={1} text="How fast can you read?" />
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos
+          molestias, totam mollitia, optio possimus nemo est assumenda vitae
+          distinctio iure aperiam atque error laudantium ducimus animi expedita.
+          Ab omnis sed fugit, similique id minus commodi quae. Fuga quos
+          obcaecati ullam! Distinctio nihil explicabo similique vero a ipsa hic,
+          unde, nam repellendus, recusandae ex quod dolor ut ad autem pariatur
+          provident rerum facere cumque tenetur aut vitae quis expedita. Quaerat
+          necessitatibus similique dicta laborum blanditiis deleniti aliquid,
+          architecto, quia eaque perspiciatis fugit vel, accusamus quod animi
+          officiis error accusantium ullam nulla harum quibusdam nam? Soluta
+          quas nihil, quis temporibus officia eius nobis veritatis optio
+          eligendi quia ducimus ullam nulla saepe alias vitae aspernatur ad? Non
+          saepe cum delectus ab eos adipisci cumque neque laudantium nesciunt!
+          Quia tempora dignissimos nihil vel, aspernatur voluptate laborum
+          labore non itaque amet! Nostrum voluptas possimus culpa dolores quo
+          fugit quidem ab reprehenderit neque, quibusdam incidunt repellendus
+          sequi repellat in rerum sit quae corrupti obcaecati, id cum nam unde
+          numquam quas? Ratione accusamus reprehenderit ducimus nam, ex repellat
+          optio voluptatem, obcaecati doloribus repellendus, minus provident. Ab
+          reiciendis sunt ut sint maiores odit, dignissimos omnis neque
+          excepturi. Ad aliquid nihil sit esse omnis harum obcaecati iste maxime
+          assumenda excepturi placeat corporis velit voluptas mollitia itaque
+          quae, doloribus perspiciatis molestiae? Nihil debitis blanditiis
+          consequuntur ipsum deleniti dignissimos autem a iusto, ex nesciunt,
+          corporis dolore voluptatum veritatis inventore sint magni, corrupti
+          natus adipisci! Architecto, quisquam dignissimos sequi neque possimus
+          sed quis, omnis deserunt, repellendus culpa suscipit inventore eaque
+          sit? Veniam modi sed laudantium impedit, esse suscipit temporibus
+          velit dolores id nemo maiores ea, officiis, dolor nam doloremque
+          blanditiis assumenda quaerat! Obcaecati pariatur, temporibus rerum
+          earum voluptatem consequatur explicabo in ex aperiam accusantium
+          perspiciatis blanditiis magnam, veniam facilis sunt expedita corporis
+          ipsum atque quia autem. Rerum ut autem laboriosam consequatur
+          consectetur?
+        </p>
+      </div>
+    </Container>
+  </Layout>
+</div>
 
 <style lang="scss">
+  .wrapper {
+    padding: 1rem 0;
+  }
+
   :root {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
       Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   }
 
-  main {
-    text-align: center;
-    padding: 1em;
-    margin: 0 auto;
-
-    p {
-      color: blue;
-    }
-  }
-
-  img {
-    height: 16rem;
-    width: 16rem;
-  }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4rem;
-    font-weight: 100;
-    line-height: 1.1;
-    margin: 2rem auto;
-    max-width: 14rem;
-  }
-
-  p {
-    max-width: 14rem;
-    margin: 1rem auto;
-    line-height: 1.35;
-  }
-
-  @media (min-width: 480px) {
-    h1 {
-      max-width: none;
-    }
-
-    p {
-      max-width: none;
-    }
+  :global(*, *::before, *::after) {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
   }
 </style>
