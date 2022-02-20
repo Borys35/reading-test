@@ -1,6 +1,6 @@
 <script lang="ts">
-  import logo from './assets/svelte.png'
-  import Counter from './lib/Counter.svelte'
+  import logo from "@/assets/svelte.png";
+  import Counter from "@/lib/Counter.svelte";
 </script>
 
 <main>
@@ -20,16 +20,20 @@
   </p>
 </main>
 
-<style>
+<style lang="scss">
   :root {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   }
 
   main {
     text-align: center;
     padding: 1em;
     margin: 0 auto;
+
+    p {
+      color: blue;
+    }
   }
 
   img {
