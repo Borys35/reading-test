@@ -5,7 +5,7 @@
 <style lang="scss">
   div {
     max-width: 1200px;
-    padding: 0 1rem;
+    padding: 0 2rem;
     margin: 0 auto;
   }
 </style>

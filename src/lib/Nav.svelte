@@ -2,7 +2,6 @@
   import logo from "@/assets/svelte.png";
   import Container from "./Container.svelte";
   import DarkThemeToggle from "./DarkThemeToggle.svelte";
-  import Heading from "./Heading.svelte";
 </script>
 
 <nav>
@@ -10,7 +9,7 @@
     <div class="wrapper">
       <div class="logo">
         <img src={logo} alt="Logo" />
-        <Heading level={3} text="Read.svelte" />
+        <h4>Read.svelte</h4>
       </div>
       <DarkThemeToggle />
     </div>
@@ -25,6 +24,7 @@
   .wrapper {
     display: flex;
     justify-content: space-between;
+    align-items: center;
   }
   img {
     width: 3rem;

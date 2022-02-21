@@ -1,6 +1,5 @@
 <script lang="ts">
   import Container from "./lib/Container.svelte";
-  import Heading from "./lib/Heading.svelte";
   import Layout from "./lib/Layout.svelte";
 </script>
 
@@ -8,7 +7,7 @@
   <Layout>
     <Container>
       <div class="wrapper">
-        <Heading level={1} text="How fast can you read?" />
+        <h1>How fast can you read?</h1>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos
           molestias, totam mollitia, optio possimus nemo est assumenda vitae
@@ -53,16 +52,5 @@
 <style lang="scss">
   .wrapper {
     padding: 1rem 0;
-  }
-
-  :root {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  }
-
-  :global(*, *::before, *::after) {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
   }
 </style>
