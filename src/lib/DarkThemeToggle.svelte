@@ -3,6 +3,7 @@
 
   function toggle() {
     on = !on;
+    document.documentElement.classList.toggle("dark", on);
   }
 </script>
 
