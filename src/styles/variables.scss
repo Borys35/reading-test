@@ -1,4 +1,17 @@
 $black-text: #000000;
 $white-text: #ffffff;
-$background-light: #ffffff;
-$background-dark: #000000;
+$bg-light: #dae5ee;
+$bg-shade-light: #e8eef3;
+$bg-dark: #222526;
+$bg-shade-dark: #151616;
+
+$primary-color: #a126ff;
+$primary-gradient: linear-gradient(90deg, #9100ff, #b95eff);
+
+$heading-family: "Poppins", sans-serif;
+$body-family: "Poppins", sans-serif;
+
+$bp-phone: 340px;
+$bp-tablet: 600px;
+$bp-desktop: 992px;
+$bp-wide: 1260px;

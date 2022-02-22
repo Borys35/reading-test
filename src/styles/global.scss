@@ -5,12 +5,14 @@
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 
   --text-color: #{$black-text};
-  --bg-color: #{$background-light};
+  --bg-color: #{$bg-light};
+  --bg-shade-color: #{$bg-shade-light};
 }
 
 .dark {
   --text-color: #{$white-text};
-  --bg-color: #{$background-dark};
+  --bg-color: #{$bg-dark};
+  --bg-shade-color: #{$bg-shade-dark};
 }
 
 body {

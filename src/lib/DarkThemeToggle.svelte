@@ -14,15 +14,17 @@
 </div>
 
 <style lang="scss">
+  @import "../styles/variables";
+
   $width: 4rem;
-  $height: 2rem;
-  $padding: 0.5rem;
+  $height: 1.5rem;
+  $padding: 0.4rem;
 
   .toggle {
     width: $width;
     height: $height;
-    padding: 0.2rem;
-    background-color: orange;
+    padding: $padding;
+    background-color: var(--bg-color);
     box-sizing: content-box;
     border-radius: $height;
   }
@@ -34,7 +36,7 @@
     width: $height;
     height: $height;
     border-radius: $height;
-    background-color: orangered;
+    background-color: $primary-color;
     left: 0;
     transition: 0.2s ease-in-out;
 
