@@ -1,56 +1,101 @@
 <script lang="ts">
+  import Button from "./lib/Button.svelte";
   import Container from "./lib/Container.svelte";
+  import Field from "./lib/Field.svelte";
   import Layout from "./lib/Layout.svelte";
+  import ReadBox from "./lib/ReadBox.svelte";
+  import Select from "./lib/Select.svelte";
 </script>
 
 <div>
   <Layout>
     <Container>
       <div class="wrapper">
-        <h1>How fast can you read?</h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos
-          molestias, totam mollitia, optio possimus nemo est assumenda vitae
-          distinctio iure aperiam atque error laudantium ducimus animi expedita.
-          Ab omnis sed fugit, similique id minus commodi quae. Fuga quos
-          obcaecati ullam! Distinctio nihil explicabo similique vero a ipsa hic,
-          unde, nam repellendus, recusandae ex quod dolor ut ad autem pariatur
-          provident rerum facere cumque tenetur aut vitae quis expedita. Quaerat
-          necessitatibus similique dicta laborum blanditiis deleniti aliquid,
-          architecto, quia eaque perspiciatis fugit vel, accusamus quod animi
-          officiis error accusantium ullam nulla harum quibusdam nam? Soluta
-          quas nihil, quis temporibus officia eius nobis veritatis optio
-          eligendi quia ducimus ullam nulla saepe alias vitae aspernatur ad? Non
-          saepe cum delectus ab eos adipisci cumque neque laudantium nesciunt!
-          Quia tempora dignissimos nihil vel, aspernatur voluptate laborum
-          labore non itaque amet! Nostrum voluptas possimus culpa dolores quo
-          fugit quidem ab reprehenderit neque, quibusdam incidunt repellendus
-          sequi repellat in rerum sit quae corrupti obcaecati, id cum nam unde
-          numquam quas? Ratione accusamus reprehenderit ducimus nam, ex repellat
-          optio voluptatem, obcaecati doloribus repellendus, minus provident. Ab
-          reiciendis sunt ut sint maiores odit, dignissimos omnis neque
-          excepturi. Ad aliquid nihil sit esse omnis harum obcaecati iste maxime
-          assumenda excepturi placeat corporis velit voluptas mollitia itaque
-          quae, doloribus perspiciatis molestiae? Nihil debitis blanditiis
-          consequuntur ipsum deleniti dignissimos autem a iusto, ex nesciunt,
-          corporis dolore voluptatum veritatis inventore sint magni, corrupti
-          natus adipisci! Architecto, quisquam dignissimos sequi neque possimus
-          sed quis, omnis deserunt, repellendus culpa suscipit inventore eaque
-          sit? Veniam modi sed laudantium impedit, esse suscipit temporibus
-          velit dolores id nemo maiores ea, officiis, dolor nam doloremque
-          blanditiis assumenda quaerat! Obcaecati pariatur, temporibus rerum
-          earum voluptatem consequatur explicabo in ex aperiam accusantium
-          perspiciatis blanditiis magnam, veniam facilis sunt expedita corporis
-          ipsum atque quia autem. Rerum ut autem laboriosam consequatur
-          consectetur?
-        </p>
+        <h1>Reading speed test</h1>
+
+        <div class="toolbar">
+          <div class="settings">
+            <Field label="Font size">
+              <Select>
+                <option>14px</option>
+                <option>16px</option>
+                <option>18px</option>
+                <option>20px</option>
+              </Select>
+            </Field>
+            <Field label="Test time">
+              <Select>
+                <option>1 min</option>
+                <option>2 min</option>
+                <option>5 min</option>
+              </Select>
+            </Field>
+            <Field label="Language">
+              <Select>
+                <option>English</option>
+                <option>French</option>
+                <option>Polish</option>
+              </Select>
+            </Field>
+          </div>
+          <Button>Start</Button>
+        </div>
+
+        <h2>Click START button to start the test</h2>
+
+        <ReadBox />
       </div>
     </Container>
   </Layout>
 </div>
 
 <style lang="scss">
+  @import "./styles/variables";
+
+  :global(*) {
+    transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
+  }
+
   .wrapper {
-    padding: 1rem 0;
+    padding: 4rem 0 2rem;
+  }
+
+  h1 {
+    margin-bottom: 4rem;
+  }
+
+  h2 {
+    color: $primary-color;
+    margin-bottom: 1rem;
+  }
+
+  .toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .settings {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  @media (min-width: $bp-desktop) {
+    .toolbar {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .settings {
+      flex-direction: row;
+    }
+
+    h2 {
+      text-align: right;
+      padding-right: 3rem;
+    }
   }
 </style>

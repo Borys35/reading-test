@@ -9,7 +9,7 @@
     <div class="wrapper">
       <div class="logo">
         <img src={logo} alt="Logo" />
-        <h4>Read.svelte</h4>
+        <h5>Reading test</h5>
       </div>
       <DarkThemeToggle />
     </div>
@@ -40,5 +40,11 @@
     display: flex;
     gap: 1rem;
     align-items: center;
+  }
+
+  @media (max-width: $bp-tablet) {
+    h5 {
+      display: none;
+    }
   }
 </style>

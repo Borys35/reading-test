@@ -16,9 +16,9 @@
 <style lang="scss">
   @import "../styles/variables";
 
-  $width: 4rem;
-  $height: 1.5rem;
-  $padding: 0.4rem;
+  $width: 3.5rem;
+  $height: 1.25rem;
+  $padding: 0.35rem;
 
   .toggle {
     width: $width;
@@ -27,6 +27,7 @@
     background-color: var(--bg-color);
     box-sizing: content-box;
     border-radius: $height;
+    cursor: pointer;
   }
   .wrapper {
     position: relative;
