@@ -1,6 +1,8 @@
-<script lang="ts"></script>
+<script lang="ts">
+  export let value = "";
+</script>
 
-<select><slot /></select>
+<select bind:value><slot /></select>
 
 <style lang="scss">
   @import "../styles/variables";

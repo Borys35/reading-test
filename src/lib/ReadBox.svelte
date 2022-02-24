@@ -1,8 +1,9 @@
 <script lang="ts">
+  import { fontSize } from "../stores";
 </script>
 
 <div class="box">
-  <p>
+  <p style={`font-size: ${$fontSize || "16px"}`}>
     Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos molestias,
     totam mollitia, optio possimus nemo est assumenda vitae distinctio iure
     aperiam atque error laudantium ducimus animi expedita. Ab omnis sed fugit,
