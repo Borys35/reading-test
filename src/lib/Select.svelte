@@ -1,8 +1,9 @@
 <script lang="ts">
   export let value = "";
+  export let disabled = false;
 </script>
 
-<select bind:value><slot /></select>
+<select bind:value {disabled}><slot /></select>
 
 <style lang="scss">
   @import "../styles/variables";
@@ -17,5 +18,10 @@
     cursor: pointer;
     outline: none;
     border: none;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
   }
 </style>

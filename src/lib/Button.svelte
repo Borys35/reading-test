@@ -1,6 +1,8 @@
-<script lang="ts"></script>
+<script lang="ts">
+  export let disabled = false;
+</script>
 
-<button><slot /></button>
+<button on:click {disabled}><slot /></button>
 
 <style lang="scss">
   @import "../styles/variables";
@@ -10,11 +12,16 @@
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
     font-weight: bold;
-    color: $black-text;
+    color: $white-text;
     background: $primary-gradient;
     font-family: $body-family;
     cursor: pointer;
     outline: none;
     border: none;
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
   }
 </style>

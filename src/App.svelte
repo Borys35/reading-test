@@ -4,6 +4,7 @@
   import Layout from "./lib/Layout.svelte";
   import ReadBox from "./lib/ReadBox.svelte";
   import Settings from "./lib/Settings.svelte";
+  import { started } from "./stores";
 </script>
 
 <div>
@@ -14,8 +15,13 @@
 
         <div class="toolbar">
           <Settings />
-          <Button on:click={() => console.log("click")}>Start</Button>
+          {#if !$started}
+            <Button on:click={() => ($started = true)}>Start</Button>
+          {:else}
+            <Button on:click={() => ($started = false)}>End</Button>
+          {/if}
         </div>
+
         <h2>Click START button to start the test</h2>
 
         <ReadBox />
