@@ -1,8 +1,19 @@
 <script lang="ts">
+  import { onMount } from "svelte";
+
   let on: boolean = false;
+
+  onMount(() => {
+    const darkTheme = localStorage.getItem("dark-theme") === "true";
+    on = darkTheme;
+  });
 
   function toggle() {
     on = !on;
+    localStorage.setItem("dark-theme", on.toString());
+  }
+
+  $: {
     document.documentElement.classList.toggle("dark", on);
   }
 </script>
