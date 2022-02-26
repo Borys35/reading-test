@@ -1,5 +1,5 @@
 <script lang="ts">
-  import logo from "@/assets/svelte.png";
+  import logo from "../assets/svelte.png";
   import Container from "./Container.svelte";
   import DarkThemeToggle from "./DarkThemeToggle.svelte";
 </script>

@@ -26,7 +26,6 @@
   </Field>
   <Field label="Test time">
     <Select bind:value={$testTime} disabled={$started}>
-      <option value={`${5}`}>5 sec</option>
       <option value={`${60}`}>1 min</option>
       <option value={`${60 * 2}`}>2 min</option>
       <option value={`${60 * 5}`}>5 min</option>
