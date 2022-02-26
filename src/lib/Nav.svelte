@@ -9,7 +9,7 @@
     <div class="wrapper">
       <div class="logo">
         <img src={logo} alt="Logo" />
-        <h5>Reading test</h5>
+        <h5><a href="/">Reading test</a></h5>
       </div>
       <DarkThemeToggle />
     </div>

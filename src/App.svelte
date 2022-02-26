@@ -4,7 +4,25 @@
   import Layout from "./lib/Layout.svelte";
   import ReadBox from "./lib/ReadBox.svelte";
   import Settings from "./lib/Settings.svelte";
-  import { started } from "./stores";
+  import {
+    prepareCountdown,
+    prepared,
+    started,
+    testCountdown,
+    tested,
+  } from "./stores";
+
+  function handleStartClick() {
+    $started = true;
+    prepareCountdown.start();
+    document.getElementById("read-box").scrollIntoView();
+  }
+
+  function handleEndClick() {
+    prepareCountdown.reset();
+    testCountdown.reset();
+    $started = false;
+  }
 </script>
 
 <div>
@@ -16,13 +34,23 @@
         <div class="toolbar">
           <Settings />
           {#if !$started}
-            <Button on:click={() => ($started = true)}>Start</Button>
+            <Button on:click={() => handleStartClick()}>Start</Button>
           {:else}
-            <Button on:click={() => ($started = false)}>End</Button>
+            <Button on:click={handleEndClick}>End</Button>
           {/if}
         </div>
 
-        <h2>Click START button to start the test</h2>
+        <h2>
+          {#if !$started}
+            Click START button to start the test
+          {:else if !$prepared}
+            Prepare for the test!
+          {:else if !$tested}
+            {$testCountdown}
+          {:else}
+            Pick the word you ended up with
+          {/if}
+        </h2>
 
         <ReadBox />
       </div>
@@ -47,7 +75,9 @@
 
   h2 {
     color: $primary-color;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    padding: 0 2rem;
+    text-align: right;
   }
 
   .toolbar {
@@ -62,11 +92,6 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: flex-end;
-    }
-
-    h2 {
-      text-align: right;
-      padding: 0 3rem;
     }
   }
 </style>

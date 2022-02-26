@@ -1,8 +1,18 @@
 <script lang="ts">
   import languages from "../languages";
-  import { fontSize, language, started, testTime } from "../stores";
+  import {
+    fontSize,
+    language,
+    started,
+    testCountdown,
+    testTime,
+  } from "../stores";
   import Field from "./Field.svelte";
   import Select from "./Select.svelte";
+
+  $: {
+    testCountdown.setInitialCountdown(parseInt($testTime));
+  }
 </script>
 
 <div class="settings">
@@ -16,6 +26,7 @@
   </Field>
   <Field label="Test time">
     <Select bind:value={$testTime} disabled={$started}>
+      <option value={`${5}`}>5 sec</option>
       <option value={`${60}`}>1 min</option>
       <option value={`${60 * 2}`}>2 min</option>
       <option value={`${60 * 5}`}>5 min</option>
