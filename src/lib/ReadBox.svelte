@@ -7,10 +7,11 @@
     prepared,
     started,
     testCountdown,
+    tested,
   } from "../stores";
 
   const initialCountdown = 3;
-  let text: string;
+  let words: string[];
   let countdown = initialCountdown;
   let interval: NodeJS.Timer;
 
@@ -18,22 +19,44 @@
   $: if ($prepared) {
     const { texts } = languages[$language];
     const i = Math.floor(Math.random() * texts.length);
-    text = texts[i];
+    words = (texts[i] as string).split(" ").reduce((words, word) => {
+      if (word) {
+        words.push(word);
+      }
+      return words;
+    }, []);
+    console.table("fdfd", words);
     testCountdown.start();
   }
 
+  // // On test coundown end
+  // $: if ($tested) {
+  //   words = words
+  //     .split(" ")
+  //     .map((word) => `<span class="word">${word}</span>`)
+  //     .join(" ");
+  // }
+
   // On test end (any reason)
   $: if (!$started) {
-    text = null;
+    words = [];
   }
 </script>
 
 <div class="box" id="read-box">
-  <p style={`font-size: ${$fontSize || "16px"}`}>
-    {#if text}
-      {text}
+  <p class="words" style={`font-size: ${$fontSize || "16px"}`}>
+    {#if words.length}
+      {#if $tested}
+        {#each words as word}
+          <span class="word">{word}&nbsp;</span>
+        {/each}
+      {:else}
+        {#each words as word}
+          <span>{word}&nbsp;</span>
+        {/each}
+      {/if}
     {:else if $started && !$prepared}
-      <div class="countdown"><span>{$prepareCountdown}</span></div>
+      <div class="countdown"><h1>{$prepareCountdown}</h1></div>
     {:else}
       This is just a test text.
       <br />
@@ -43,6 +66,8 @@
 </div>
 
 <style lang="scss">
+  @import "../styles/variables";
+
   .box {
     position: relative;
     background: var(--bg-shade-color);
@@ -51,16 +76,46 @@
     height: 30rem;
     overflow-y: auto;
   }
+
   .countdown {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    font-weight: bold;
-    font-size: 7rem;
     text-align: center;
     display: grid;
     place-content: center;
+
+    h1 {
+      font-size: 7rem;
+    }
+  }
+
+  .words {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .word {
+    animation: flash 0.3ms ease-in-out;
+    cursor: pointer;
+    transition: color 0.1s ease-in-out;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  @keyframes flash {
+    0% {
+      color: inherit;
+    }
+    50% {
+      color: $primary-color;
+    }
+    100% {
+      color: inherit;
+    }
   }
 </style>
