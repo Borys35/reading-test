@@ -4,21 +4,7 @@ export const fontSize = writable("16px");
 export const testTime = writable("300");
 export const language = writable("en");
 export const started = writable(false);
-
-// export const prepareCountdown = readable(
-//   initialPreapreCountdown,
-//   function start(set) {
-//     let c = initialPreapreCountdown;
-//     const interval = setInterval(() => {
-//       set(c--);
-//       console.log(c);
-//     }, 1000);
-
-//     return function end() {
-//       clearInterval(interval);
-//     };
-//   }
-// );
+export const wordsRead = writable(0);
 
 const initialPreapreCountdown = 3;
 function createPrepareCountdown() {

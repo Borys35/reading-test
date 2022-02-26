@@ -8,12 +8,18 @@
     started,
     testCountdown,
     tested,
+    testTime,
+    wordsRead,
   } from "../stores";
+  import Button from "./Button.svelte";
 
-  const initialCountdown = 3;
+  export let resetAll: Function;
+
   let words: string[];
-  let countdown = initialCountdown;
-  let interval: NodeJS.Timer;
+
+  function handleWordClick(i: number) {
+    $wordsRead = i + 1;
+  }
 
   // After preparing
   $: if ($prepared) {
@@ -25,17 +31,8 @@
       }
       return words;
     }, []);
-    console.table("fdfd", words);
     testCountdown.start();
   }
-
-  // // On test coundown end
-  // $: if ($tested) {
-  //   words = words
-  //     .split(" ")
-  //     .map((word) => `<span class="word">${word}</span>`)
-  //     .join(" ");
-  // }
 
   // On test end (any reason)
   $: if (!$started) {
@@ -45,10 +42,22 @@
 
 <div class="box" id="read-box">
   <p class="words" style={`font-size: ${$fontSize || "16px"}`}>
-    {#if words.length}
+    {#if $wordsRead}
+      <div class="content">
+        <h2>Congratulations</h2>
+        <p>
+          You read with speed of <strong
+            >{($wordsRead / parseInt($testTime)) * 60}</strong
+          > words per minute
+        </p>
+        <Button on:click={() => resetAll()}>Reset</Button>
+      </div>
+    {:else if words.length}
       {#if $tested}
-        {#each words as word}
-          <span class="word">{word}&nbsp;</span>
+        {#each words as word, i}
+          <span class="word" on:click={() => handleWordClick(i)}>
+            {word}&nbsp;
+          </span>
         {/each}
       {:else}
         {#each words as word}
@@ -56,7 +65,9 @@
         {/each}
       {/if}
     {:else if $started && !$prepared}
-      <div class="countdown"><h1>{$prepareCountdown}</h1></div>
+      <div class="content">
+        <h1>{$prepareCountdown}</h1>
+      </div>
     {:else}
       This is just a test text.
       <br />
@@ -77,15 +88,19 @@
     overflow-y: auto;
   }
 
-  .countdown {
+  .content {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     text-align: center;
-    display: grid;
-    place-content: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    gap: 2rem;
 
     h1 {
       font-size: 7rem;

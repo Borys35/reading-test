@@ -10,6 +10,7 @@
     started,
     testCountdown,
     tested,
+    wordsRead,
   } from "./stores";
 
   function handleStartClick() {
@@ -18,9 +19,10 @@
     document.getElementById("read-box").scrollIntoView();
   }
 
-  function handleEndClick() {
+  function handleResetClick() {
     prepareCountdown.reset();
     testCountdown.reset();
+    $wordsRead = 0;
     $started = false;
   }
 </script>
@@ -34,9 +36,9 @@
         <div class="toolbar">
           <Settings />
           {#if !$started}
-            <Button on:click={() => handleStartClick()}>Start</Button>
+            <Button on:click={handleStartClick}>Start</Button>
           {:else}
-            <Button on:click={handleEndClick}>End</Button>
+            <Button on:click={handleResetClick}>Reset</Button>
           {/if}
         </div>
 
@@ -47,12 +49,14 @@
             Prepare for the test!
           {:else if !$tested}
             {$testCountdown}
-          {:else}
+          {:else if !$wordsRead}
             Pick the word you ended up with
+          {:else}
+            Test ended
           {/if}
         </h2>
 
-        <ReadBox />
+        <ReadBox resetAll={handleResetClick} />
       </div>
     </Container>
   </Layout>

@@ -18,6 +18,7 @@
     cursor: pointer;
     outline: none;
     border: none;
+    // box-shadow: 0 0 16px rgba($primary-color, 0.2);
 
     &:disabled {
       opacity: 0.5;
