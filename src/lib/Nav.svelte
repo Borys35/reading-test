@@ -23,6 +23,7 @@
     background: $primary-gradient;
     padding: 1rem 0;
     color: $white-text;
+    box-shadow: 0 0 1.5rem rgba($primary-color, 0.5);
   }
 
   .wrapper {

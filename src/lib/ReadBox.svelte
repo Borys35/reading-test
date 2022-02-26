@@ -1,15 +1,15 @@
 <script lang="ts">
   import languages from "../languages";
   import {
-    fontSize,
-    language,
-    prepareCountdown,
-    prepared,
-    started,
-    testCountdown,
-    tested,
-    testTime,
-    wordsRead,
+  fontSize,
+  language,
+  prepareCountdown,
+  prepared,
+  started,
+  testCountdown,
+  tested,
+  testTime,
+  wordsRead
   } from "../stores";
   import Button from "./Button.svelte";
 
@@ -47,7 +47,7 @@
         <h2>Congratulations</h2>
         <p>
           You read with speed of <strong
-            >{($wordsRead / parseInt($testTime)) * 60}</strong
+            >{Math.round(($wordsRead / parseInt($testTime)) * 60)}</strong
           > words per minute
         </p>
         <Button on:click={() => resetAll()}>Reset</Button>

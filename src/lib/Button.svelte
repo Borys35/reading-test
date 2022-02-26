@@ -18,11 +18,16 @@
     cursor: pointer;
     outline: none;
     border: none;
-    // box-shadow: 0 0 16px rgba($primary-color, 0.2);
+    box-shadow: 0 0 1.5rem rgba($primary-color, 0.2);
+    transition: box-shadow 0.15s ease-in-out;
 
     &:disabled {
       opacity: 0.5;
       cursor: default;
+    }
+
+    &:hover:not(:disabled) {
+      box-shadow: 0 0 1.5rem rgba($primary-color, 0.5);
     }
   }
 </style>
