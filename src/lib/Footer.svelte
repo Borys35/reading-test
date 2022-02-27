@@ -3,7 +3,13 @@
 </script>
 
 <footer>
-  <Container>&copy; {new Date().getFullYear()}, Borys Kaczmarek</Container>
+  <Container
+    >&copy; {new Date().getFullYear()}, Borys Kaczmarek |
+    <a href="https://github.com/Borys35" target="_blank">github</a>
+    |
+    <a href="https://twitter.com/borys_35" target="_blank">twitter</a
+    ></Container
+  >
 </footer>
 
 <style lang="scss">

@@ -22,6 +22,7 @@
       <option value="16px">16px</option>
       <option value="18px">18px</option>
       <option value="20px">20px</option>
+      <option value="24px">24px</option>
     </Select>
   </Field>
   <Field label="Test time">

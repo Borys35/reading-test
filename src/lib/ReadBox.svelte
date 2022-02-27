@@ -1,15 +1,16 @@
 <script lang="ts">
+  import { afterUpdate, beforeUpdate } from "svelte";
   import languages from "../languages";
   import {
-  fontSize,
-  language,
-  prepareCountdown,
-  prepared,
-  started,
-  testCountdown,
-  tested,
-  testTime,
-  wordsRead
+    fontSize,
+    language,
+    prepareCountdown,
+    prepared,
+    started,
+    testCountdown,
+    tested,
+    testTime,
+    wordsRead,
   } from "../stores";
   import Button from "./Button.svelte";
 
@@ -34,10 +35,25 @@
     testCountdown.start();
   }
 
+  let scrollTop: number;
+  let readBox = document.getElementById("read-box");
+
+  beforeUpdate(() => {
+    if (!readBox) return;
+    scrollTop = readBox.scrollTop;
+  });
+
+  afterUpdate(() => {
+    if (!readBox) return;
+    if (scrollTop) readBox.scrollTop = scrollTop;
+  });
+
   // On test end (any reason)
   $: if (!$started) {
     words = [];
   }
+
+  $: wpm = Math.round(($wordsRead / parseInt($testTime)) * 60);
 </script>
 
 <div class="box" id="read-box">
@@ -46,11 +62,17 @@
       <div class="content">
         <h2>Congratulations</h2>
         <p>
-          You read with speed of <strong
-            >{Math.round(($wordsRead / parseInt($testTime)) * 60)}</strong
-          > words per minute
+          You read with speed of <strong>{wpm}</strong> words per minute
         </p>
-        <Button on:click={() => resetAll()}>Reset</Button>
+        <div class="btns">
+          <Button
+            href={`https://twitter.com/intent/tweet?text=I read with speed of ${wpm} wpm!%0AChecked with&url=readingtest.netlify.app&via=borys_35`}
+            style={`background: #1DA1F2`}
+          >
+            Tweet
+          </Button>
+          <Button on:click={() => resetAll()}>Reset</Button>
+        </div>
       </div>
     {:else if words.length}
       {#if $tested}
@@ -86,6 +108,17 @@
     padding: 2rem;
     height: 30rem;
     overflow-y: auto;
+  }
+
+  .btns {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    @media (min-width: $bp-tablet) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 
   .content {

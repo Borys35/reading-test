@@ -1,13 +1,20 @@
 <script lang="ts">
   export let disabled = false;
+  export let href: string = "";
+  export let style: string = "";
 </script>
 
-<button on:click {disabled}><slot /></button>
+{#if href}
+  <a {href} {disabled} {style} target="_blank" class="btn"><slot /></a>
+{:else}
+  <button on:click {disabled} {style} class="btn"><slot /></button>
+{/if}
 
 <style lang="scss">
   @import "../styles/variables";
 
-  button {
+  .btn {
+    display: inline-block;
     font-size: 1.25rem;
     padding: 0.75rem 1.5rem;
     border-radius: 0.5rem;
