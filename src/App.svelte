@@ -66,7 +66,7 @@
   @import "./styles/variables";
 
   :global(*) {
-    transition: color 0.2s ease-in-out, background 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
   }
 
   .wrapper {

@@ -7,7 +7,8 @@
     >&copy; {new Date().getFullYear()}, Borys Kaczmarek |
     <a href="https://github.com/Borys35" target="_blank">github</a>
     |
-    <a href="https://twitter.com/borys_35" target="_blank">twitter</a
+    <a href="https://www.linkedin.com/in/borys-kaczmarek/" target="_blank"
+      >linkedin</a
     ></Container
   >
 </footer>
